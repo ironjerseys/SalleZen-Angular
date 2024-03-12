@@ -7,11 +7,7 @@ import { Recommendation } from './recommendation.model';
   providedIn: 'root',
 })
 export class RecommendationService {
-  // A garder: adresse du l'API hebergée sur AWS mais en http
-  // readonly API_URL = 'http://13.36.241.96:8080';
-
-  // API hebergée sur Azure en https
-  readonly API_URL = 'https://sallezenbackend.azurewebsites.net';
+  readonly API_URL = 'https://sallezenbackendjava.azurewebsites.net';
 
   readonly ENDPOINT_RECOMMENDATION = '/recommendation';
 
