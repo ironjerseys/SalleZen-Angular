@@ -85,6 +85,6 @@ select {
 /* Media query pour les écrans de moins de 768px (tablettes et mobiles) */
 @media (max-width: 768px) {
   .element {
-    width: calc(50% - 20px); /* Pour les écrans plus petits, 2 par ligne */
+    width: calc(40% - 20px); /* Pour les écrans plus petits, 2 par ligne */
   }
 }
