@@ -1,96 +1,24 @@
-<div class="columns-container">
-  <div class="column">
-    <h3>Films</h3>
-    <div class="element" *ngFor="let recommendation of movies">
-      <p id="elementTitle">{{ recommendation.name }}</p>
-      <p>{{ recommendation.description }}</p>
-      <p id="dateAndAuthor">
-        Par {{ recommendation.author }}, le {{ recommendation.date | date }}
-      </p>
-      <!-- <button (click)="updateRecommendation(recommendation)">Modifier</button> -->
-      <button (click)="deleteRecommendation(recommendation.id)">
-        Supprimer
-      </button>
-    </div>
-  </div>
+<nav class="category-filter">
+  <button (click)="setCategory('')">Tous</button>
+  <button (click)="setCategory('Movie')">Films</button>
+  <button (click)="setCategory('TVshow')">Séries</button>
+  <button (click)="setCategory('VideoGame')">Jeux Vidéos</button>
+  <button (click)="setCategory('Music')">Musique</button>
+  <button (click)="setCategory('Book')">Livres</button>
+  <button (click)="setCategory('YoutubeVideo')">Vidéos YouTube</button>
+</nav>
 
-  <div class="column">
-    <h3>Séries</h3>
-    <div class="element" *ngFor="let recommendation of tvShows">
-      <p id="elementTitle">{{ recommendation.name }}</p>
-      <p>{{ recommendation.description }}</p>
-      <p id="dateAndAuthor">
-        Par {{ recommendation.author }}, le {{ recommendation.date | date }}
-      </p>
-      <!-- <button (click)="updateRecommendation(recommendation)">Modifier</button> -->
-      <button (click)="deleteRecommendation(recommendation.id)">
-        Supprimer
-      </button>
+<div class="recommendations-grid">
+  <div *ngFor="let recommendation of recommendations" class="element">
+    <div class="recommendation-title">{{ recommendation.name }}</div>
+    <div class="recommendation-description">
+      {{ recommendation.description }}
     </div>
-  </div>
-
-  <div class="column">
-    <h3>Jeux Vidéos</h3>
-    <div class="element" *ngFor="let recommendation of videoGames">
-      <p id="elementTitle">{{ recommendation.name }}</p>
-      <p>{{ recommendation.description }}</p>
-      <p id="dateAndAuthor">
-        Par {{ recommendation.author }}, le {{ recommendation.date | date }}
-      </p>
-      <!-- <button (click)="updateRecommendation(recommendation)">Modifier</button> -->
-      <button (click)="deleteRecommendation(recommendation.id)">
-        Supprimer
-      </button>
+    <div class="recommendation-details">
+      Par {{ recommendation.author }}, le
+      {{ recommendation.date | date : "mediumDate" }}
     </div>
-  </div>
-
-  <div class="column">
-    <h3>Livres</h3>
-    <div class="element" *ngFor="let recommendation of books">
-      <p id="elementTitle">{{ recommendation.name }}</p>
-      <p>{{ recommendation.description }}</p>
-      <p id="dateAndAuthor">
-        Par {{ recommendation.author }}, le {{ recommendation.date | date }}
-      </p>
-      <!-- <button (click)="updateRecommendation(recommendation)">Modifier</button> -->
-      <button (click)="deleteRecommendation(recommendation.id)">
-        Supprimer
-      </button>
-    </div>
-  </div>
-
-  <div class="column">
-    <h3>Musiques</h3>
-    <div class="element" *ngFor="let recommendation of music">
-      <p id="elementTitle">{{ recommendation.name }}</p>
-      <p>
-        <a href="{{ recommendation.description }}">{{
-          recommendation.description
-        }}</a>
-      </p>
-      <p id="dateAndAuthor">
-        Par {{ recommendation.author }}, le {{ recommendation.date | date }}
-      </p>
-      <!-- <button (click)="updateRecommendation(recommendation)">Modifier</button> -->
-      <button (click)="deleteRecommendation(recommendation.id)">
-        Supprimer
-      </button>
-    </div>
-  </div>
-
-  <div class="column">
-    <h3>Vidéos YouTube</h3>
-    <div class="element" *ngFor="let recommendation of youtubeVideos">
-      <p id="elementTitle">{{ recommendation.name }}</p>
-      <p>{{ recommendation.description }}</p>
-      <p id="dateAndAuthor">
-        Par {{ recommendation.author }}, le {{ recommendation.date | date }}
-      </p>
-      <!-- <button (click)="updateRecommendation(recommendation)">Modifier</button> -->
-      <button (click)="deleteRecommendation(recommendation.id)">
-        Supprimer
-      </button>
-    </div>
+    <button (click)="deleteRecommendation(recommendation.id)">Supprimer</button>
   </div>
 </div>
 

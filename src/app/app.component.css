@@ -1,68 +1,69 @@
-p {
-  overflow-wrap: break-word;
+/* Style pour la barre de filtrage des catégories */
+.category-filter {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.element {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: inline-block;
-  border-radius: 3px;
-}
-
-.element:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
-
-.columns-container {
-  display: flex;
-}
-
-.column {
-  flex: 1;
-  padding: 10px;
-}
-
-#dateAndAuthor {
-  font-style: italic;
-  font-size: small;
-}
-
-#elementTitle {
-  font-size: large;
-}
-
-input[type="submit"],
+/* Style général des boutons */
 button,
-[aria-label] {
-  cursor: pointer;
-}
-input[type="text"],
-input[type="password"],
-select {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-input[type="submit"],
-#showFormButton,
-button {
+input[type="submit"] {
   background-color: #333;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 3px;
-  margin: 5%;
+  margin: 5% 0; /* Ajustement pour l'uniformité */
 }
 
+button:hover,
+input[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* Style du conteneur des recommandations */
+.recommendations-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Style pour chaque élément de recommandation */
+.element {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(20% - 20px); /* Ajustement pour 5 éléments par ligne */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.element:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Styles spécifiques pour les titres, descriptions et détails dans les éléments */
+.recommendation-title {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.recommendation-description,
+.recommendation-details {
+  margin: 0 10px 10px 10px;
+}
+
+.recommendation-details {
+  font-style: italic;
+  font-size: small;
+}
+
+/* Styles pour le formulaire */
 form {
   background-color: #fff;
   padding: 10px;
@@ -70,10 +71,13 @@ form {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-input[type="submit"]:hover {
-  background-color: #555;
+input[type="text"],
+input[type="password"],
+select {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: block;
+  width: 95%;
 }
-
-/* #addForm {
-    display: none;
-  } */

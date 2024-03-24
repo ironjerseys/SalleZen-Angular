@@ -11,14 +11,11 @@ export class AppComponent implements OnInit {
   title = 'RecommendationListFrontend';
   showForm = false;
 
+  // Ajoutez une propriété pour stocker toutes les recommandations
+  allRecommendations: Recommendation[] = [];
   recommendations: Recommendation[] = [];
-  movies: Recommendation[] = [];
-  tvShows: Recommendation[] = [];
-  music: Recommendation[] = [];
-  videoGames: Recommendation[] = [];
-  youtubeVideos: Recommendation[] = [];
-  books: Recommendation[] = [];
 
+  // Suppression des propriétés inutilisées pour les différentes catégories
   newRecommendation: Recommendation = {
     id: '',
     category: '',
@@ -28,30 +25,27 @@ export class AppComponent implements OnInit {
     author: '',
   };
 
+  // Ajoutez une propriété pour la catégorie sélectionnée
+  selectedCategory: string = '';
+
   constructor(private recommendationService: RecommendationService) {}
 
   ngOnInit(): void {
     this.loadRecommendations();
   }
 
-  toggleForm() {
-    console.log('OKKKKK');
+  toggleForm(): void {
     this.showForm = !this.showForm;
   }
 
-  loadRecommendations() {
+  loadRecommendations(): void {
     this.recommendationService.getRecommendations().subscribe((data) => {
-      this.recommendations = data;
-      this.movies = data.filter((r) => r.category === 'Movie');
-      this.tvShows = data.filter((r) => r.category === 'TVshow');
-      this.music = data.filter((r) => r.category === 'Music');
-      this.videoGames = data.filter((r) => r.category === 'VideoGame');
-      this.youtubeVideos = data.filter((r) => r.category === 'YoutubeVideo');
-      this.books = data.filter((r) => r.category === 'Book');
+      this.allRecommendations = data; // Stocke toutes les recommandations
+      this.recommendations = [...this.allRecommendations]; // Par défaut, affiche toutes les recommandations
     });
   }
 
-  addRecommendation() {
+  addRecommendation(): void {
     this.recommendationService
       .addRecommendation(this.newRecommendation)
       .subscribe(() => {
@@ -60,7 +54,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-  updateRecommendation(recommendation: Recommendation) {
+  updateRecommendation(recommendation: Recommendation): void {
     this.recommendationService
       .updateRecommendation(recommendation)
       .subscribe(() => {
@@ -68,13 +62,13 @@ export class AppComponent implements OnInit {
       });
   }
 
-  deleteRecommendation(id: string) {
+  deleteRecommendation(id: string): void {
     this.recommendationService.deleteRecommendation(id).subscribe(() => {
       this.loadRecommendations();
     });
   }
 
-  resetForm() {
+  resetForm(): void {
     this.newRecommendation = {
       id: '',
       category: '',
@@ -83,5 +77,16 @@ export class AppComponent implements OnInit {
       date: new Date(),
       author: '',
     };
+  }
+
+  setCategory(category: string): void {
+    this.selectedCategory = category;
+    if (category === '') {
+      this.recommendations = [...this.allRecommendations];
+    } else {
+      this.recommendations = this.allRecommendations.filter(
+        (r) => r.category === category
+      );
+    }
   }
 }
