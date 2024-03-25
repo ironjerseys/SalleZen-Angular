@@ -7,18 +7,19 @@
 /* Style général des boutons */
 button,
 input[type="submit"] {
-  background-color: #333;
+  background: linear-gradient(145deg, #4e4e4e, #333333);
   color: #fff;
-  border: none;
+  border: 1px solid #5a5a5a; /* Couleur de bordure subtile */
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 5% 0; /* Ajustement pour l'uniformité */
+  transition: background 0.3s ease;
 }
 
 button:hover,
 input[type="submit"]:hover {
-  background-color: #555;
+  background: linear-gradient(145deg, #656565, #4a4a4a);
 }
 
 /* Style du conteneur des recommandations */
@@ -28,34 +29,76 @@ input[type="submit"]:hover {
   justify-content: space-around;
 }
 
-/* Style pour chaque élément de recommandation */
+/* Style pour chaque élément de recommandation avec bordure en dégradé */
 .element {
-  border: 1px solid #ccc;
+  position: relative;
+  border: 1px solid transparent;
   padding: 10px;
   margin: 10px;
-  width: calc(20% - 20px); /* Ajustement pour 5 éléments par ligne */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  width: calc(20% - 20px);
+  background-color: #222;
+  color: #ddd;
   transition: transform 0.2s, box-shadow 0.2s;
   display: inline-block;
   border-radius: 5px;
   overflow: hidden;
 }
 
+.element::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #007bff, #ff00ff);
+}
+
+/* Style pour chaque élément de recommandation */
+/* .element {
+  position: relative;
+  padding: 10px;
+  margin: 20px;
+  width: calc(20% - 40px);
+  background-color: #222;
+  color: #ddd;
+  display: inline-block;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.element::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  background: linear-gradient(45deg, #007bff, #ff00ff);
+  z-index: -1;
+  border-radius: 6px;
+} */
+
 .element:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Ombre subtile */
 }
 
 /* Styles spécifiques pour les titres, descriptions et détails dans les éléments */
-.recommendation-title {
-  font-weight: bold;
-  margin: 10px 0;
-}
-
+.recommendation-title,
 .recommendation-description,
 .recommendation-details {
   margin: 0 10px 10px 10px;
+}
+
+/* Styles spécifiques pour les titres dans les éléments */
+.recommendation-title {
+  font-weight: bold;
+  color: white; /* Nouvelle couleur pour les titres */
 }
 
 .recommendation-details {
@@ -65,26 +108,25 @@ input[type="submit"]:hover {
 
 /* Styles pour le formulaire */
 form {
-  background-color: #fff;
+  background-color: #333;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 input[type="text"],
 input[type="password"],
 select {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  display: block;
-  width: 95%;
+  background: #555; /* Fond des champs de formulaire */
+  color: #fff; /* Texte des champs de formulaire */
+  border: 1px solid #777; /* Bordure des champs de formulaire */
 }
 
 /* Media query pour les écrans de moins de 768px (tablettes et mobiles) */
 @media (max-width: 768px) {
   .element {
-    width: calc(40% - 20px); /* Pour les écrans plus petits, 2 par ligne */
+    width: calc(
+      40% - 20px
+    ); /* Ajustement pour les écrans plus petits, 2 par ligne */
   }
 }
