@@ -19,19 +19,38 @@ jobs:
         with:
           submodules: true
           lfs: false
+      
+      # Ajout de la construction de l'image Docker
+      - name: Build Docker image
+        run: |
+          docker build . -t monnomutilisateurdocker/monapp:${{ github.sha }}
+        # Remplacez "monnomutilisateurdocker/monapp" par votre nom d'utilisateur Docker Hub et le nom de votre répertoire/image
+      
+      # Connexion à Docker Hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+        # Assurez-vous d'avoir ajouté DOCKER_USERNAME et DOCKER_PASSWORD comme secrets dans votre dépôt GitHub
+      
+      # Push de l'image Docker sur Docker Hub
+      - name: Push Docker image to Docker Hub
+        run: |
+          docker push monnomutilisateurdocker/monapp:${{ github.sha }}
+        # Remplacez "monnomutilisateurdocker/monapp" par votre nom d'utilisateur Docker Hub et le nom de votre répertoire/image
+
+      # Suite du déploiement sur Azure Static Web Apps
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_SMOKE_0013BEA03 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # App source code path
-          api_location: "api" # Api source code path - optional
-          output_location: "dist/sallezen" # Built app content directory - optional
-          ###### End of Repository/Build Configurations ######
+          app_location: "/"
+          api_location: "api"
+          output_location: "dist/sallezen"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
