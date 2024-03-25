@@ -9,16 +9,20 @@
 </nav>
 
 <div class="recommendations-grid">
-  <div *ngFor="let recommendation of recommendations" class="element">
-    <div class="recommendation-title">{{ recommendation.name }}</div>
-    <div class="recommendation-description">
-      {{ recommendation.description }}
+  <div *ngFor="let recommendation of recommendations" class="elementWrapper">
+    <div class="element">
+      <div class="recommendation-title">{{ recommendation.name }}</div>
+      <div class="recommendation-description">
+        {{ recommendation.description }}
+      </div>
+      <div class="recommendation-details">
+        Par {{ recommendation.author }}, le
+        {{ recommendation.date | date : "mediumDate" }}
+      </div>
+      <button (click)="deleteRecommendation(recommendation.id)">
+        Supprimer
+      </button>
     </div>
-    <div class="recommendation-details">
-      Par {{ recommendation.author }}, le
-      {{ recommendation.date | date : "mediumDate" }}
-    </div>
-    <button (click)="deleteRecommendation(recommendation.id)">Supprimer</button>
   </div>
 </div>
 

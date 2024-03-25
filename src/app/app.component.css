@@ -30,10 +30,9 @@ input[type="submit"]:hover {
 }
 
 /* Style pour chaque élément de recommandation avec bordure en dégradé */
-.element {
+.elementWrapper {
   position: relative;
   border: 1px solid transparent;
-  padding: 10px;
   margin: 10px;
   width: calc(20% - 20px);
   background-color: #222;
@@ -42,50 +41,18 @@ input[type="submit"]:hover {
   display: inline-block;
   border-radius: 5px;
   overflow: hidden;
-}
-
-.element::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -2px;
-  border-radius: 5px;
   background: linear-gradient(45deg, #007bff, #ff00ff);
 }
 
-/* Style pour chaque élément de recommandation */
-/* .element {
-  position: relative;
-  padding: 10px;
-  margin: 20px;
-  width: calc(20% - 40px);
-  background-color: #222;
-  color: #ddd;
-  display: inline-block;
-  border-radius: 5px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.element::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  bottom: -5px;
-  left: -5px;
-  background: linear-gradient(45deg, #007bff, #ff00ff);
-  z-index: -1;
-  border-radius: 6px;
-} */
-
-.element:hover {
+.elementWrapper:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Ombre subtile */
+}
+
+.element {
+  background-color: #222;
+  padding: 10px;
+  height: 100%;
 }
 
 /* Styles spécifiques pour les titres, descriptions et détails dans les éléments */
@@ -124,9 +91,7 @@ select {
 
 /* Media query pour les écrans de moins de 768px (tablettes et mobiles) */
 @media (max-width: 768px) {
-  .element {
-    width: calc(
-      40% - 20px
-    ); /* Ajustement pour les écrans plus petits, 2 par ligne */
+  .elementWrapper {
+    width: calc(40%);
   }
 }
