@@ -1,8 +1,8 @@
 export interface Recommendation {
-  id: string;
-  category: string;
+  id?: string;
   name: string;
-  description: string;
-  date: Date;
   author: string;
+  description: string;
+  date: string;  // Ici, on utilise une chaîne de caractères pour la date au format ISO
+  category: string;  // category sera envoyé sous forme de string
 }
