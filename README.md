@@ -1,4 +1,4 @@
-# Salle Zen - Angular
+# Salle Zen - Angular 17 TypeScript 5.4.3
 
 ## The project
 
