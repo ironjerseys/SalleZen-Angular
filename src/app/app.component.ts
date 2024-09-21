@@ -15,14 +15,13 @@ export class AppComponent implements OnInit {
   allRecommendations: Recommendation[] = [];
   recommendations: Recommendation[] = [];
 
-  // Suppression des propriétés inutilisées pour les différentes catégories
   newRecommendation: Recommendation = {
-    id: '',
-    category: '',
-    name: '',
-    description: '',
-    date: new Date(),
-    author: '',
+    id: 'string',  // Tu peux mettre null ou laisser vide si l'ID est généré par l'API
+    name: 'string',  // Exemples de valeurs qui seront modifiées dans le formulaire
+    author: 'string',
+    description: 'string',
+    date: new Date().toISOString(),  // Convertir la date en ISO 8601
+    category: 'Movie'
   };
 
   // Ajoutez une propriété pour la catégorie sélectionnée
@@ -46,12 +45,17 @@ export class AppComponent implements OnInit {
   }
 
   addRecommendation(): void {
+    // Appelle la méthode du service pour envoyer les données
     this.recommendationService
       .addRecommendation(this.newRecommendation)
-      .subscribe(() => {
-        this.loadRecommendations();
-        this.resetForm();
-      });
+      .subscribe(
+        (response) => {
+          console.log('Recommendation added successfully:', response);
+        },
+        (error) => {
+          console.error('Error occurred:', error);
+        }
+      );
   }
 
   updateRecommendation(recommendation: Recommendation): void {
@@ -74,7 +78,7 @@ export class AppComponent implements OnInit {
       category: '',
       name: '',
       description: '',
-      date: new Date(),
+      date: '',
       author: '',
     };
   }

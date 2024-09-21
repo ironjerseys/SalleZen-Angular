@@ -7,9 +7,10 @@ import { Recommendation } from './recommendation.model';
   providedIn: 'root',
 })
 export class RecommendationService {
-  readonly API_URL = 'https://sallezenbackendjava.azurewebsites.net';
+  //readonly API_URL = 'https://sallezenbackendjava.azurewebsites.net';
+  readonly API_URL = 'https://sallezencsharp-c9fcathdf7dcd2cz.germanywestcentral-01.azurewebsites.net/api';
 
-  readonly ENDPOINT_RECOMMENDATION = '/recommendation';
+  readonly ENDPOINT_RECOMMENDATION = '/Recommendation';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -19,15 +20,21 @@ export class RecommendationService {
     );
   }
 
-  addRecommendation(
-    recommendation: Recommendation
-  ): Observable<Recommendation> {
-    const recommendationToSend = { ...recommendation, id: undefined };
+  // Méthode pour envoyer un POST
+  addRecommendation(recommendation: Recommendation): Observable<Recommendation> {
+    // Envoie de la recommandation avec les en-têtes nécessaires
     return this.httpClient.post<Recommendation>(
       this.API_URL + this.ENDPOINT_RECOMMENDATION,
-      recommendationToSend
+      recommendation,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'accept': 'text/plain'  // Spécifie que nous acceptons la réponse en texte
+        }
+      }
     );
   }
+
 
   updateRecommendation(
     recommendation: Recommendation

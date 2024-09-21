@@ -19,7 +19,7 @@
         Par {{ recommendation.author }}, le
         {{ recommendation.date | date : "mediumDate" }}
       </div>
-      <button (click)="deleteRecommendation(recommendation.id)">
+      <button *ngIf="recommendation.id" (click)="deleteRecommendation(recommendation.id!)">
         Supprimer
       </button>
     </div>
