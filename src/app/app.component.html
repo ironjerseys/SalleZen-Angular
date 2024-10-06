@@ -17,7 +17,7 @@
       </div>
       <div class="recommendation-details">
         Par {{ recommendation.author }}, le
-        {{ recommendation.date | date : "mediumDate" }}
+        {{ recommendation.recommendationDate | date : "mediumDate" }}
       </div>
       <button *ngIf="recommendation.id" (click)="deleteRecommendation(recommendation.id!)">
         Supprimer

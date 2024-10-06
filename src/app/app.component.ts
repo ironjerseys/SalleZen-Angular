@@ -16,11 +16,11 @@ export class AppComponent implements OnInit {
   recommendations: Recommendation[] = [];
 
   newRecommendation: Recommendation = {
-    id: 'string',  // Tu peux mettre null ou laisser vide si l'ID est généré par l'API
+    //id: 'string',  // Tu peux mettre null ou laisser vide si l'ID est généré par l'API
     name: 'string',  // Exemples de valeurs qui seront modifiées dans le formulaire
     author: 'string',
     description: 'string',
-    date: new Date().toISOString(),  // Convertir la date en ISO 8601
+    //recommendationDate: new Date(), 
     category: 'Movie'
   };
 
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
       category: '',
       name: '',
       description: '',
-      date: '',
+      recommendationDate: new Date(), 
       author: '',
     };
   }
