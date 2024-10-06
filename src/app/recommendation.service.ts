@@ -7,9 +7,7 @@ import { Recommendation } from './recommendation.model';
   providedIn: 'root',
 })
 export class RecommendationService {
-  //readonly API_URL = 'https://sallezenbackendjava.azurewebsites.net';
   readonly API_URL = 'https://sallezencsharp-c9fcathdf7dcd2cz.germanywestcentral-01.azurewebsites.net/api';
-
   readonly ENDPOINT_RECOMMENDATION = '/Recommendation';
 
   constructor(private httpClient: HttpClient) {}
