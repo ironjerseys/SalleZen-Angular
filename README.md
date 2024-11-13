@@ -4,7 +4,7 @@
 
 Salle Zen - Angular is the frontend for
 
-- SalleZen-CSharp https://https://github.com/ironjerseys/SalleZen-CSharp
+- SalleZen-CSharp https://github.com/ironjerseys/SalleZen-CSharp
 You can see it here on Azure : https://sallezen.com/
 
 You can save the list of the bests movies, tv-shows, books, musics, etc
