@@ -1,4 +1,4 @@
-# Salle Zen - Angular 17 TypeScript 5.4.3
+# Salle Zen
 
 ## The project
 
@@ -6,6 +6,8 @@ Salle Zen - Angular is the frontend for
 
 - SalleZen-CSharp https://github.com/ironjerseys/SalleZen-CSharp
 You can see it here on Azure : https://sallezen.com/
+
+It is build with Angular 17 and TypeScript 5.4.3
 
 You can save the list of the bests movies, tv-shows, books, musics, etc
 Everything is public, so you can discover new things or share yours
